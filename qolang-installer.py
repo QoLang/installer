@@ -99,7 +99,11 @@ elif os.name == "nt":
             "https://github.com/QoLang/QoLang/releases/latest/download/qo.exe", WIN_QO+"\\qo.exe")
 
         print("---> Adding qolang to PATH")
-        os.system("setx PATH %PATH%;"+WIN_QO)    
+        cmd = 'setx PATH "%PATH%;'+WIN_QO+'"'
+        try:
+            os.system(cmd)
+        except:
+            print("--!> Allready added to PATH, but if you want, run "+cmd)
         print("---> Done!")
 
     else:
@@ -123,10 +127,11 @@ elif os.name == "nt":
         print("---> https://github.com/QoLang/QoLang/tree/master/libs")
 
         print("---> Adding qolang to PATH")
+        cmd ="setx PATH \"%PATH%;"+WIN_QO+'"'
         try:
-            os.system("setx PATH \"%PATH%;"+WIN_QO+'"')
+            os.system(cmd)
         except:
-            print("--!> Allready added to PATH")
+            print("--!> Allready added to PATH, but if you want, run "+cmd)
  
         print("---> Done!")
 
